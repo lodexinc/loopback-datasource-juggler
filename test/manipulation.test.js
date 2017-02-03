@@ -340,6 +340,7 @@ describe('manipulation', function() {
               return done(new Error('Create should have rejected duplicate id.'));
             }
             err.message.should.match(/duplicate/i);
+            err.statusCode.should.equal(409);
             done();
           });
         });
