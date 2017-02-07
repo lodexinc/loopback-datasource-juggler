@@ -615,8 +615,9 @@ describe('basic-querying', function() {
         User.find({where: {'friends.name': {regexp: /^Ringo/}}}, function(err, users) {
           should.not.exist(err);
           users.length.should.be.equal(2);
-          users[0].name.should.be.equal('John Lennon');
-          users[1].name.should.be.equal('Paul McCartney');
+          var expectedUsers = ['John Lennon', 'Paul McCartney'];
+          (expectedUsers.indexOf(users[0].name) > -1).should.be.ok();
+          (expectedUsers.indexOf(users[1].name) > -1).should.be.ok();
           done();
         });
       });
